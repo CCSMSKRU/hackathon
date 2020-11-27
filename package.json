@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "build": "babel public_src --watch --out-dir public --copy-files"
+    "watch": "babel public_src --watch --out-dir public --copy-files",
+    "build": "babel public_src --out-dir public --copy-files"
   },
   "dependencies": {
     "async": "^1.5.2",
