@@ -1,0 +1,33 @@
+{
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "targets": {
+          "edge": "17",
+          "firefox": "60",
+          "chrome": "67",
+          "safari": "11.1",
+          "ie": "11"
+        }
+      }
+    ]
+  ],
+  "ignore": [
+    "./**/*.min.js",
+    "./**/outro.js",
+    "./**/intro.js",
+    "./**/uploadFiles.js",
+
+
+    "./**/xmlToJSON.js",
+    "./**/moment.min.js",
+    "./**/bootbox.min.js",
+    "./**/JsBarcode.js",
+    "./**/spin.min.js",
+    "./**/flatpickr.js",
+
+
+    "./assets/js/plugins/**/"
+  ]
+}

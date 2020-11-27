@@ -1,0 +1,78 @@
+
+<div class="form-request-work">
+    <h1 class="form-hl">Заявка №{+{id}+}</h1>
+
+	<div class="col-md-4">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="col-md-6">
+					<div class="">{{{applicant_organization}}}</div>
+					<div class="">{{{created_by_user}}}</div>
+				</div>
+				<div class="col-md-6">
+					<div class="">{{{executor_organization}}}</div>
+					<div class="depended-field-holder" data-dependof="executor_organization" data-dependofid="executor_organization_id">{{{executor_user}}}</div>
+					<div class="">{{{executor_user_phone}}}</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="fields_wrapper" style=" padding: 0 25px; "></div>
+			<div class="save_fields">
+				<i class="fa fa-save"></i>
+			</div>
+		</div>
+	</div>
+    <div class="col-md-3">
+
+
+
+        <div class="">{{{object_}}}</div>
+        <div class="">{{{building}}}</div>
+        <div class="">{{{level}}}</div>
+        <div class="">{{{location_name_with_breadcrumbs}}}</div>
+        <div class="">{{{location_description}}}</div>
+
+
+        <div class="">{{{status_request_work}}}</div>
+        <div class="">{{{request_work_category}}}</div>
+
+        <div class="">{{{paid}}}</div>
+        <div class="">{{{by_close_photo_necessary}}}</div>
+
+
+
+
+
+        <div class="">{{{type_request_for_request_work}}}</div>
+        <div class="">{{{timeliness_for_request_work}}}</div>
+
+        <div class="">{{{start_time_plan}}}</div>
+        <div class="">{{{end_time_plan}}}</div>
+        <div class="">{{{request}}}</div>
+    </div>
+    <div class="col-md-5">
+        <div class="wrapper-tabs support-tabs">
+            <div class="in_tab_tabs_wrapper two_tangibles_itt_tab" header-tab="two_tangibles" style="height: 100%">
+                <div class="itt_header">
+                    <div class="itt_option active two_tangibles_itt_tab" data-tab="comments">Комментарии</div>
+                    <div class="itt_option two_tangibles_itt_tab" style="height: 100%" data-tab="history-status">Журнал</div>
+                    <div class="itt_option two_tangibles_itt_tab" style="height: 100%" data-tab="history">История</div>
+                </div>
+                <div class="itt_tabs"  style="height: 100%">
+                    <div class="itt_tab two_tangibles_itt_tab comments-tab active" data-tab="comments"  style="height: 100%; overflow-y: auto;"></div>
+                    <div class="itt_tab two_tangibles_itt_tab history-statuses" data-tab="history-status"></div>
+                    <div class="itt_tab two_tangibles_itt_tab itt_tab-history"  style="height: 100%; overflow-y: auto;" data-tab="history">
+                        <!--                            <div class="r-history-log-container"></div>-->
+                        <!--                            <div class="history-table"></div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="lower-buttons-padder"></div>
+    <div class="lower-buttons-wrapper"></div>
+
+</div>
+

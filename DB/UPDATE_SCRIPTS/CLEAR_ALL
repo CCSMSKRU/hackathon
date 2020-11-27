@@ -1,0 +1,19 @@
+ - Сперва удалим из class_profile то, что не удалось удалить из интерфейса (или можно здесь)
+ - Удалим соответствующие таблицы
+ #SELECT CONCAT('DROP TABLE ', TABLE_NAME , ';') FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='hackathon'
+  AND TABLE_NAME NOT IN (SELECT name from hackathon.class_profile);
+   -- результат скопируем и исполним
+
+ - Почистим поля классов, клиентские объекты, их поля, меню:
+#DELETE from class_fields_profile WHERE class_id not in (SELECT id from class_profile)
+#DELETE from client_object_profile WHERE class_id not in (SELECT id from class_profile)
+#DELETE from client_object_fields_profile WHERE client_object_id not in (SELECT id from client_object_profile)
+#DELETE from menu WHERE class_id not in (SELECT id from class_profile) and type_id = 2
+
+ - trancate таблиц, где данные уже не нужны
+ - Почистить tables.json
+
+
+-- удалим deleted
+SELECT CONCAT('delete from `', TABLE_NAME, '` where deleted is not null;') FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='hackathon'
+  AND TABLE_NAME IN (SELECT name from hackathon.class_profile);

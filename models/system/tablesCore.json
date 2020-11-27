@@ -1,0 +1,744 @@
+{
+  "class_profile": {
+    "MySQLUnique":true,
+    "profile": {
+      "name": "class_profile"
+    },
+    "structure": {
+      "id": { "type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "name": { "type": "varchar", "length": "255", "unique": true},
+      "name_ru": { "type": "varchar", "length": "255", "default": ""},
+      "primary_key": { "type": "varchar", "length": "255", "default": "id"},
+      "parent_table": { "type": "varchar", "length": "255", "default": ""},
+      "parent_key": { "type": "varchar", "length": "255", "default": ""},
+      "server_parent_table": { "type": "varchar", "length": "255", "default": ""},
+      "server_parent_key": { "type": "varchar", "length": "255", "default": ""},
+      "server_parent_key_for_dynamic_fields": { "type": "varchar", "length": "255", "default": ""},
+      "checkbox_where": { "type": "text"},
+      "checkbox_where_default_enabled": { "type": "tinyint", "length": "1"},
+      "checkbox_where_title": { "type": "text"},
+      "param_checkbox": { "type": "varchar", "length": "255", "default": ""},
+      "param_checkbox_default_enabled": { "type": "tinyint", "length": "1"},
+      "param_checkbox_title": { "type": "varchar", "length": "255", "default": ""},
+      "ending": { "type": "varchar", "length": "255", "default": ""},
+      "default_order_by": { "type": "varchar", "length": "255", "default": "id desc"},
+      "default_where": { "type": "text"},
+      "open_form_client_object": { "type": "varchar", "length": "255"},
+      "child_client_object": { "type": "varchar", "length": "255"},
+      "rows_max_num_list": { "type": "varchar", "length": "255", "default": "10,20,50,100"},
+      "rows_max_num": { "type": "int", "length": "10", "default": 10},
+      "new_command": { "type": "tinyint", "length": "1", "default": 1},
+      "modify_command": { "type": "tinyint", "length": "1", "default": 1},
+      "remove_command": { "type": "tinyint", "length": "1", "default": 1},
+      "editable": { "type": "tinyint", "length": "1", "default": 1},
+      "additional_functionality": { "type": "tinyint", "length": "1", "default": 0},
+      "distinct_columns": { "type": "varchar", "length": "255", "default": ""},
+      "check_published": { "type": "tinyint", "length": "1", "default": 1},
+      "auto_publish": { "type": "tinyint", "length": "1", "default": 1},
+      "use_cache": { "type": "tinyint", "length": "1", "default": 1},
+      "check_company_access": { "type": "tinyint", "length": "1", "default": 1},
+      "count_large": { "type": "tinyint", "length": "1", "default": 0},
+      "like_type": { "type": "varchar", "length": "20"},
+      "hierarchical_table": { "type": "tinyint", "length": "1", "default": 0},
+      "do_not_set_deep": { "type": "tinyint", "length": "1", "default": 0},
+      "do_not_use_cache_client": { "type": "tinyint", "length": "1", "default": 0},
+      "child_class": { "type": "varchar", "length": "255", "hint": "Через точку можно указать клиентский объект. Например для Объекта: building.building_co_for_tree"}
+    }
+  },
+  "class_fields_profile": {
+    "MySQLUnique":true,
+    "profile": {
+      "name": "class_fields_profile",
+      "server_parent_table":"class_profile",
+      "server_parent_key":"class_id"
+    },
+    "structure": {
+      "id": { "type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "class_id": { "type": "bigint", "length": "20", "notNull": true, "unique":true},
+      "class": { "type": "varchar", "length": "255", "from_table": "class_profile", "keyword": "class_id", "is_virtual": true, "return_column": "name", "name": "Класс" },
+      "select_class_id": { "type": "bigint", "length": "20"},
+      "select_class": { "type": "varchar", "length": "255", "from_table": "class_profile", "keyword": "select_class_id", "is_virtual": true, "return_column": "name", "name": "Класс колонки" },
+      "column_name": { "type": "varchar", "length": "255", "unique":true},
+      "parent_key": { "type": "tinyint", "length": "1"},
+      "primary_key": { "type": "tinyint", "length": "1"},
+      "name": { "type": "varchar", "length": "255"},
+      "return_id": { "type": "varchar", "length": "255", "name": "Вернуть id для select"},
+      "return_name": { "type": "varchar", "length": "255", "name": "Вернуть name для select"},
+      "lov_return_to_column": { "type": "varchar", "length": "255", "name": "Сохранять в колонку для select"},
+      "select_search_columns": { "type": "varchar", "length": "255"},
+      "select_autocomplete_columns": { "type": "text", "name": "Поля для дозаполнения", "hint": "Заполните сюда поля через запятую, которые необходимо дозаполнить при добавлении нового элемента в выпадающий список.<br/>Например, если выпадающий список Авторов, то при добавлении из списка нового автора, необходимо дозаполнить Ф И О<br/>(firstname,lastname,secondname)"},
+      "sort_no" : {"type": "bigint", "length": "20"},
+      "type": { "type": "varchar", "length": "255"},
+      "field_length": { "type": "int", "length": "20"},
+      "lov_columns": { "type": "varchar", "length": "255"},
+      "filter_type_id": { "type": "int", "length": "4"},
+      "filter_type": { "type": "varchar", "length": "255", "from_table": "filter_type", "keyword": "filter_type_id", "is_virtual": true, "return_column": "sysname", "name": "Тип фильтра" },
+      "type_of_editor_id": { "type": "int", "length": "4"},
+      "type_of_editor": { "type": "varchar", "length": "255", "from_table": "type_of_editor", "keyword": "type_of_editor_id", "is_virtual": true, "return_column": "sysname", "name": "Тип редактора" },
+      "quick_search_field": { "type": "tinyint", "length": "1"},
+      "visible": { "type": "tinyint", "length": "1", "default": 1},
+      "required": { "type": "tinyint", "length": "1"},
+      "editable": { "type": "tinyint", "length": "1", "default": 1},
+      "updatable": { "type": "tinyint", "length": "1", "default": 0},
+      "insertable": { "type": "tinyint", "length": "1", "default": 0},
+      "server_editable": { "type": "tinyint", "length": "1", "default": 1},
+      "server_updatable": { "type": "tinyint", "length": "1", "default": 0},
+      "server_insertable": { "type": "tinyint", "length": "1", "default": 0},
+      "queryable": { "type": "tinyint", "length": "1", "default": 1},
+      "whereable": { "type": "tinyint", "length": "1", "default": 1},
+      "from_table": { "type": "varchar", "length": "255"},
+      "join_table": { "type": "varchar", "length": "255"},
+      "join_table_by_alias": { "type": "varchar", "length": "255"},
+      "dynamic_field_id": { "type": "bigint", "length": "20", "sort_no":999},
+      "table_alias": { "type": "varchar", "length": "255"},
+      "modify_in_ext_tbl": { "type": "tinyint", "length": "1", "sort_no":60},
+      "modify_in_ext_tbl_key": { "type": "varchar", "length": "255", "sort_no":61},
+      "keyword": { "type": "varchar", "length": "255"},
+      "return_column": { "type": "varchar", "length": "255"},
+      "is_virtual": { "type": "tinyint", "length": "1"},
+      "default_value": {"type": "text"},
+      "concat_fields": {"type": "text"},
+      "validation": { "type": "varchar", "length": "255"},
+      "get_formating": { "type": "varchar", "length": "255", "default": ""},
+      "set_formating": { "type": "varchar", "length": "255", "default": ""},
+      "is_unique": { "type": "tinyint", "length": "1"},
+      "hint": {"type": "text"},
+      "min_value" : {"type": "DECIMAL(50,10)"},
+      "max_value" : {"type": "DECIMAL(50,10)"},
+      "min_datetime_value" : {"type": "varchar", "length": "255"},
+      "max_datetime_value" : {"type": "varchar", "length": "255"},
+      "default_datetime_value" : {"type": "varchar", "length": "255"},
+      "calender_options" : {"type": "varchar", "length": "4000", "hint": "JSON https://flatpickr.js.org/options/"},
+      "value_step" : {"type": "DECIMAL(50,10)", "default":1},
+      "id_from_source" : {"type": "bigint", "length": "20", "editable":false, "sort_no":1000},
+      "dynamic_field_pair_id" : {"type": "varchar", "length": "255", "editable":false, "sort_no":1001},
+      "source_class_id" : {"type": "bigint", "length": "20", "editable":false, "sort_no":1011},
+      "source_class" : {"type": "varchar", "length": "255", "editable":false, "sort_no":1012},
+
+      "table_for_filter" : {"type": "varchar", "length": "255", "hint": "Таблица ограничивающая выводимые динамические поля. (у этой категории товаров только такие свойства)\nПрофайл таблицы меняется в зависимости от того в какой 'категории' находишься\nЭто работает если КлОбъект находится в родительской форме\nПри этом если это будет работать даже если родитель не прямой, а через несколько сущностей"},
+      "parent_key_for_filter" : {"type": "varchar", "length": "255", "hint": "Принцип см  hint table_for_filter"},
+      "record_key_for_filter" : {"type": "varchar", "length": "255", "hint": "Ключ 'свойства' в таблице фильтра"},
+      "input_key_for_filter" : {"type": "varchar", "length": "255", "hint": "Ключ 'server_parent_key'. Он должен быть установлен у класса, на основе которого основан 'target_co'"},
+      "table_value_name_prefix" : {"type": "varchar", "length": "255","hint": "Название таблицы, связь сущшность-свойство-значение (то что перед _value). \nНужно ставить только если имя не стандартное. Например для Product и Parametr будет Product_parametr_value"},
+      "is_inherit": { "type": "tinyint", "length": "1"},
+
+      "is_class_field": { "type": "tinyint", "length": "1", "default":0, "hint": "При обновлении сервера, это поле будет сравниваться не как есть, а с подстановкой соответствующего id класса из текущей базы."},
+      "is_co_field": { "type": "tinyint", "length": "1", "default":0, "hint": "При обновлении сервера, это поле будет сравниваться не как есть, а с подстановкой соответствующего id клиентского объекта из текущей базы."},
+
+      "save_log": { "type": "tinyint", "length": "1", "default":0},
+      "depend_column" : {"type": "varchar", "length": "255"},
+      "is_depend_where_func" : {"type": "tinyint", "length": "1", "hint": "Во фрейме можно будет определить функцию, которая будет подготавливать where для селекта этого поля.\nНаименование функции должно быть prepareSelfWhere_ИМЯ_ПОЛЯ (например: )frameInstance.prepareSelfWhere_user"}
+    }
+  },
+  "client_object_profile": {
+    "MySQLUnique":true,
+    "profile": {
+      "name": "client_object_profile",
+      "server_parent_table":"class_profile",
+      "server_parent_key":"class_id"
+    },
+    "structure": {
+      "id": { "type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "class_id": { "type": "bigint", "length": "20", "notNull": true, "unique":true},
+      "class": { "type": "varchar", "length": "255", "from_table": "class_profile", "keyword": "class_id", "is_virtual": true, "return_column": "name", "name": "Класс"},
+      "name": { "type": "varchar", "length": "255", "unique": true},
+      "name_ru": { "type": "varchar", "length": "255", "default": "", "name": "Name"},
+      "primary_key": { "type": "varchar", "length": "255", "default": "id"},
+      "parent_table": { "type": "varchar", "length": "255", "default": ""},
+      "parent_key": { "type": "varchar", "length": "255", "default": ""},
+      "server_parent_table": { "type": "varchar", "length": "255", "default": "", "editable":false, "server_editable":false},
+      "server_parent_key": { "type": "varchar", "length": "255", "default": "", "editable":false, "server_editable":false},
+      "checkbox_where": { "type": "text", "length": "255"},
+      "checkbox_where_default_enabled": { "type": "tinyint", "length": "1"},
+      "checkbox_where_title": { "type": "text", "length": "255"},
+      "param_checkbox": { "type": "varchar", "length": "255", "default": ""},
+      "param_checkbox_default_enabled": { "type": "tinyint", "length": "1"},
+      "param_checkbox_title": { "type": "varchar", "length": "255", "default": ""},
+      "ending": { "type": "varchar", "length": "255", "default": "", "name": "Ending"},
+      "default_order_by": { "type": "varchar", "length": "255", "default": "id desc"},
+      "default_where": { "type": "text"},
+      "open_form_client_object": { "type": "varchar", "length": "255"},
+      "child_client_object": { "type": "varchar", "length": "255"},
+      "rows_max_num_list": { "type": "varchar", "length": "255", "default": "10,20,50,100"},
+      "rows_max_num": { "type": "int", "length": "10", "default": 10},
+      "new_command": { "type": "tinyint", "length": "1", "default": 1},
+      "modify_command": { "type": "tinyint", "length": "1", "default": 1},
+      "remove_command": { "type": "tinyint", "length": "1", "default": 1},
+      "editable": { "type": "tinyint", "length": "1", "default": 1},
+      "additional_functionality": { "type": "tinyint", "length": "1", "default": 0},
+      "distinct_columns": { "type": "varchar", "length": "255", "default": ""},
+      "check_published": { "type": "tinyint", "length": "1", "default": 1},
+      "auto_publish": { "type": "tinyint", "length": "1", "default": 1},
+      "use_cache": { "type": "tinyint", "length": "1", "default": 1},
+      "do_not_use_cache_client": { "type": "tinyint", "length": "1", "default": 0},
+      "child_class": { "type": "varchar", "length": "255", "hint": "Через точку можно указать клиентский объект. Например для Объекта: building.building_co_for_tree"}
+    }
+  },
+  "client_object_fields_profile": {
+    "MySQLUnique":true,
+    "profile": {
+      "name": "client_object_fields_profile",
+      "server_parent_table":"client_object_profile",
+      "server_parent_key":"client_object_id"
+    },
+    "structure": {
+      "id": { "type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "client_object_id": { "type": "bigint", "length": "20", "notNull": true, "unique":true},
+      "client_object": { "type": "varchar", "length": "255", "from_table": "client_object_profile", "keyword": "client_object_id", "is_virtual": true, "return_column": "name", "name": "Клиентский объект колонки" },
+      "class_id": { "type": "bigint", "length": "20"},
+      "class": { "type": "varchar", "length": "255", "from_table": "class_profile", "keyword": "class_id", "is_virtual": true, "return_column": "name", "name": "Класс"},
+      "select_class_id": { "type": "bigint", "length": "20"},
+      "select_class": { "type": "varchar", "length": "255", "from_table": "class_profile", "keyword": "select_class_id", "is_virtual": true, "return_column": "name", "name": "Класс колонки" },
+      "column_name": { "type": "varchar", "length": "255", "unique":true},
+      "parent_key": { "type": "tinyint", "length": "1"},
+      "primary_key": { "type": "tinyint", "length": "1"},
+      "name": { "type": "varchar", "length": "255"},
+      "return_id": { "type": "varchar", "length": "255", "name": "Вернуть id для select"},
+      "return_name": { "type": "varchar", "length": "255", "name": "Вернуть name для select"},
+      "lov_return_to_column": { "type": "varchar", "length": "255", "name": "Сохранять в колонку для select"},
+      "select_search_columns": { "type": "varchar", "length": "255"},
+      "select_autocomplete_columns": { "type": "text", "name": "Поля для дозаполнения", "hint": "Заполните сюда поля через запятую, которые необходимо дозаполнить при добавлении нового элемента в выпадающий список.<br/>Например, если выпадающий список Авторов, то при добавлении из списка нового автора, необходимо дозаполнить Ф И О<br/>(firstname,lastname,secondname)"},
+      "sort_no" : {"type": "bigint", "length": "20"},
+      "type": { "type": "varchar", "length": "255"},
+      "field_length": { "type": "int", "length": "20"},
+      "lov_columns": { "type": "varchar", "length": "255"},
+      "filter_type_id": { "type": "int", "length": "4"},
+      "filter_type": { "type": "varchar", "length": "255", "from_table": "filter_type", "keyword": "filter_type_id", "is_virtual": true, "return_column": "sysname", "name": "Тип фильтра" },
+      "type_of_editor_id": { "type": "int", "length": "4"},
+      "type_of_editor": { "type": "varchar", "length": "255", "from_table": "type_of_editor", "keyword": "type_of_editor_id", "is_virtual": true, "return_column": "sysname", "name": "Тип редактора" },
+      "quick_search_field": { "type": "tinyint", "length": "1"},
+      "visible": { "type": "tinyint", "length": "1", "default": 1},
+      "required": { "type": "tinyint", "length": "1"},
+      "editable": { "type": "tinyint", "length": "1", "default": 1},
+      "updatable": { "type": "tinyint", "length": "1", "default": 0},
+      "insertable": { "type": "tinyint", "length": "1", "default": 0},
+      "server_editable": { "type": "tinyint", "length": "1", "default": 1},
+      "server_updatable": { "type": "tinyint", "length": "1", "default": 0},
+      "server_insertable": { "type": "tinyint", "length": "1", "default": 0},
+      "queryable": { "type": "tinyint", "length": "1", "default": 1},
+      "whereable": { "type": "tinyint", "length": "1", "default": 1},
+      "from_table": { "type": "varchar", "length": "255"},
+      "join_table": { "type": "varchar", "length": "255"},
+      "join_table_by_alias": { "type": "varchar", "length": "255"},
+      "dynamic_field_id": { "type": "bigint", "length": "20"},
+      "table_alias": { "type": "varchar", "length": "255"},
+      "modify_in_ext_tbl": { "type": "tinyint", "length": "1", "sort_no":60},
+      "modify_in_ext_tbl_key": { "type": "varchar", "length": "255", "sort_no":61},
+      "keyword": { "type": "varchar", "length": "255"},
+      "return_column": { "type": "varchar", "length": "255"},
+      "is_virtual": { "type": "tinyint", "length": "1"},
+      "default_value": {"type": "text"},
+      "concat_fields": {"type": "text"},
+      "validation": { "type": "varchar", "length": "255"},
+      "get_formating": { "type": "varchar", "length": "255", "default": ""},
+      "set_formating": { "type": "varchar", "length": "255", "default": ""},
+      "is_unique": { "type": "tinyint", "length": "1"},
+      "hint": {"type": "text"},
+      "min_value" : {"type": "DECIMAL(50,10)"},
+      "max_value" : {"type": "DECIMAL(50,10)"},
+      "min_datetime_value" : {"type": "varchar", "length": "255"},
+      "max_datetime_value" : {"type": "varchar", "length": "255"},
+      "default_datetime_value" : {"type": "varchar", "length": "255"},
+      "calender_options" : {"type": "varchar", "length": "4000", "hint": "JSON https://flatpickr.js.org/options/"},
+      "value_step" : {"type": "DECIMAL(50,10)", "default":1},
+      "id_from_source" : {"type": "bigint", "length": "20", "editable":false, "sort_no":1000},
+      "dynamic_field_pair_id" : {"type": "bigint", "length": "20", "editable":false, "sort_no":1001},
+      "source_class_id" : {"type": "bigint", "length": "20", "editable":false, "sort_no":1011},
+      "source_class" : {"type": "varchar", "length": "255", "editable":false, "sort_no":1012},
+
+      "table_for_filter" : {"type": "varchar", "length": "255", "hint": "Таблица ограничивающая выводимые динамические поля. (у этой категории товаров только такие свойства)\nПрофайл таблицы меняется в зависимости от того в какой 'категории' находишься\nЭто работает если КлОбъект находится в родительской форме\nПри этом если это будет работать даже если родитель не прямой, а через несколько сущностей"},
+      "parent_key_for_filter" : {"type": "varchar", "length": "255", "hint": "Принцип см  hint table_for_filter"},
+      "record_key_for_filter" : {"type": "varchar", "length": "255", "hint": "Ключ 'свойства' в таблице фильтра"},
+      "input_key_for_filter" : {"type": "varchar", "length": "255", "hint": "Ключ 'server_parent_key'. Он должен быть установлен у класса, на основе которого основан 'target_co'"},
+      "table_value_name_prefix" : {"type": "varchar", "length": "255","hint": "Название таблицы, связь сущшность-свойство-значение (то что перед _value)"},
+      "is_inherit": { "type": "tinyint", "length": "1"},
+
+      "is_class_field": { "type": "tinyint", "length": "1", "hint": "См. класс", "editable": false},
+      "is_co_field": { "type": "tinyint", "length": "1", "hint": "См. класс", "editable": false},
+
+      "save_log": { "type": "tinyint", "length": "1", "default":0, "hint": "Используется только на уровне класса", "editable": false},
+      "depend_column" : {"type": "varchar", "length": "255"},
+      "is_depend_where_func" : {"type": "tinyint", "length": "1", "hint": "Во фрейме можно будет определить функцию, которая будет подготавливать where для селекта этого поля.\nНаименование функции должно быть prepareSelfWhere_ИМЯ_ПОЛЯ (например: )frameInstance.prepareSelfWhere_user"}
+    }
+  },
+  "join_table_keyword": {
+    "profile": {
+      "name": "join_table_keyword",
+      "name_ru": "Ключ для связки таблиц",
+      "ending": ""
+    },
+    "structure": {
+      "id" : { "type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "alias" : {"type": "varchar", "length": "255"},
+      "linked_id" : { "type": "bigint", "length": "20"}
+    }
+  },
+  "dynamic_field_pair": {
+    "profile": {
+      "name": "dynamic_field_pair",
+      "name_ru": "Связка динамических полей",
+      "ending": "а"
+    },
+    "structure": {
+      "id" : { "type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "source_class_id" : {"type": "bigint", "length": "20"},
+      "source_class" : {"type": "varchar", "length": "255", "from_table": "class_profile", "keyword": "source_class_id", "return_column": "name", "is_virtual": true},
+      "target_client_object_id" : {"type": "bigint", "length": "20"},
+      "target_client_object" : {"type": "varchar", "length": "255", "from_table": "client_object_profile", "keyword": "target_client_object_id", "return_column": "name", "is_virtual": true},
+      "name" : {"type": "varchar", "length": "255"},
+      "name_ru" : {"type": "varchar", "length": "255"},
+      "table_for_filter" : {"type": "varchar", "length": "255", "hint": "Таблица ограничивающая выводимые динамические поля. (у этой категории товаров только такие свойства)\nПрофайл таблицы меняется в зависимости от того в какой 'категории' находишься\nЭто работает если КлОбъект находится в родительской форме\nПри этом если это будет работать даже если родитель не прямой, а через несколько сущностей"},
+      "parent_key_for_filter" : {"type": "varchar", "length": "255", "hint": "Принцип см  hint table_for_filter"},
+      "record_key_for_filter" : {"type": "varchar", "length": "255", "hint": "Ключ 'свойства' в таблице фильтра"},
+      "input_key_for_filter" : {"type": "varchar", "length": "255", "hint": "Ключ 'server_parent_key'. Он должен быть установлен у класса, на основе которого основан 'target_co'"},
+      "table_value_name_prefix" : {"type": "varchar", "length": "255","hint": "Название таблицы, связь сущшность-свойство-значение (то что перед _value)"},
+      "additional_where" : {"type": "text", "hint": "Можно наложить доп условия на определенную таблицу. JSON {taxon_trait_value:[{key:'taxon_gender_sysname', val1:'FAMALE'}]};"}
+    }
+  },
+  "dynamic_field": {
+    "profile": {
+      "name": "dynamic_field",
+      "name_ru": "Динамическое поле",
+      "ending": "",
+      "server_parent_table":"dynamic_field_pair",
+      "server_parent_key":"dynamic_field_pair_id"
+    },
+    "structure": {
+      "id" : { "type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "dynamic_field_pair_id" : {"type": "bigint", "length": "20", "visible": false, "parent_key": true, "required":true},
+      "dynamic_field_pair" : {"type": "varchar", "length": "255", "from_table": "dynamic_field_pair", "keyword": "dynamic_field_pair_id", "return_column": "name", "is_virtual": true, "name": "Пара"},
+      "id_from_source" : {"type": "bigint", "length": "20", "title":"id записи", "required":true},
+      "name" : {"type": "varchar", "length": "255", "name": ""},
+      "alias" : {"type": "varchar", "length": "255", "unique": true},
+      "type_id": { "type": "bigint", "length": "20", "visible": false, "required":true},
+      "to_remove": { "type": "tinyint", "length": "1"},
+      "type_name" : {"type": "varchar", "length": "255", "from_table": "dynamic_field_type", "keyword": "type_id", "return_column": "name", "is_virtual": true, "name": "Тип"},
+      "type_sysname" : {"type": "varchar", "length": "255", "from_table": "dynamic_field_type", "keyword": "type_id", "return_column": "sysname", "is_virtual": true, "visible": false, "require": true},
+      "source_class_id" : {"type": "bigint", "length": "20", "from_table": "dynamic_field_pair", "keyword": "dynamic_field_pair_id", "return_column": "source_class_id", "is_virtual": true, "editable":false},
+      "source_class" : {"type": "varchar", "length": "255", "join_table": "dynamic_field_pair" , "from_table": "class_profile", "keyword": "source_class_id", "return_column": "name", "is_virtual": true, "editable":false},
+      "target_client_object_id" : {"type": "bigint", "length": "20", "from_table": "dynamic_field_pair", "keyword": "dynamic_field_pair_id", "return_column": "target_client_object_id", "is_virtual": true, "editable":false},
+      "target_client_object" : {"type": "varchar", "length": "255", "join_table": "dynamic_field_pair" , "from_table": "client_object_profile", "keyword": "target_client_object_id", "return_column": "name", "is_virtual": true, "editable":false},
+      "min_value1" : {"type": "DECIMAL(50,10)"},
+      "max_value1" : {"type": "DECIMAL(50,10)"},
+      "value1_step" : {"type": "DECIMAL(50,10)", "default":1},
+      "min_value2" : {"type": "DECIMAL(50,10)"},
+      "max_value2" : {"type": "DECIMAL(50,10)"},
+      "value2_step" : {"type": "DECIMAL(50,10)", "default":1},
+      "table_for_filter" : {"type": "varchar", "length": "255", "from_table": "dynamic_field_pair", "keyword": "dynamic_field_pair_id", "return_column": "table_for_filter", "is_virtual": true, "editable":false},
+      "parent_key_for_filter" : {"type": "varchar", "length": "255", "from_table": "dynamic_field_pair", "keyword": "dynamic_field_pair_id", "return_column": "parent_key_for_filter", "is_virtual": true, "editable":false},
+      "record_key_for_filter" : {"type": "varchar", "length": "255", "from_table": "dynamic_field_pair", "keyword": "dynamic_field_pair_id", "return_column": "record_key_for_filter", "is_virtual": true, "editable":false},
+      "input_key_for_filter" : {"type": "varchar", "length": "255", "from_table": "dynamic_field_pair", "keyword": "dynamic_field_pair_id", "return_column": "input_key_for_filter", "is_virtual": true, "editable":false},
+      "table_value_name_prefix" : {"type": "varchar", "length": "255", "from_table": "dynamic_field_pair", "keyword": "dynamic_field_pair_id", "return_column": "table_value_name_prefix", "is_virtual": true, "editable":false},
+      "additional_where" : {"type": "varchar", "length": "255", "from_table": "dynamic_field_pair", "keyword": "dynamic_field_pair_id", "return_column": "additional_where", "is_virtual": true, "editable":false}
+    }
+  },
+  "dynamic_field_type": {
+    "profile": {
+      "name": "dynamic_field_type",
+      "name_ru": "Тип динамического поля",
+      "ending": ""
+    },
+    "structure": {
+      "id" : { "type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "name" : {"type": "varchar", "length": "255", "name": "Наименование"},
+      "sysname" : {"type": "varchar", "length": "255", "name": "Системное имя"}
+    }
+  },
+  "user": {
+    "profile": {
+      "name": "user",
+      "name_ru": "Пользователь",
+      "ending": ""
+    },
+    "structure": {
+      "id": {"type": "bigint","length": "20","notNull": true,"autoInc": true,"primary_key": true},
+      "firstname": {"type": "varchar","length": "255"},
+      "lastname": {"type": "varchar","length": "255"},
+      "midname": {"type": "varchar","length": "255"},
+      "fio" : {"type": "varchar", "length": "255", "concat_fields": "firstname midname lastname", "is_virtual": true, "name": "ФИО"},
+      "email": {"type": "varchar","length": "255","unique": true, "server_editable":false, "server_insertable":true, "server_updatable":false, "name":"email/login"},
+      "status_id": { "type": "bigint", "length": "20", "server_editable":false, "server_updatable":true, "visible": false},
+      "status_name" : {"type": "varchar", "length": "255", "from_table": "user_status", "keyword": "status_id", "return_column": "name", "is_virtual": true, "name": "Статус"},
+      "status_sysname" : {"type": "varchar", "length": "255", "from_table": "user_status", "keyword": "status_id", "return_column": "sysname", "is_virtual": true, "name": "Системное имя статуса", "visible": false},
+      "user_type_id": { "type": "bigint", "length": "20", "visible": false},
+      "user_type_name" : {"type": "varchar", "length": "255", "from_table": "user_type", "keyword": "user_type_id", "return_column": "name", "is_virtual": true, "name": "Тип пользователя"},
+      "user_type_sysname" : {"type": "varchar", "length": "255", "from_table": "user_type", "keyword": "user_type_id", "return_column": "sysname", "is_virtual": true, "name": "Системное имя типа", "visible": false, "default_value":"USER", "require": true},
+      "birthday": {"type": "date","default": "NULL"},
+      "gender_id": {"type": "int","length": "2", "visible": false},
+      "gender_name" : {"type": "varchar", "length": "255", "from_table": "gender", "keyword": "gender_id", "return_column": "name", "is_virtual": true, "name": "Пол"},
+      "hashedPassword": {"type": "varchar","length": "255", "server_editable":false, "visible": false},
+      "salt": {"type": "varchar","length": "255", "server_editable":false, "visible": false},
+      "password": {"type": "varchar","length": "255", "concat_fields": "*", "name": "Пароль",  "is_virtual": true},
+      "temp_password": {"type": "varchar","length": "255","name":"Временный пароль"},
+      "company_id": { "type": "bigint", "length": "20", "require": true, "server_editable":false, "server_insertable":true, "server_updatable":false, "visible": false},
+      "company_name" : {"type": "varchar", "length": "255", "from_table": "company_sys", "keyword": "company_id", "return_column": "name", "is_virtual": true, "name": "Компания"},
+      "sid": {"type": "varchar","length": "255", "visible": false},
+      "image": {"type": "varchar", "length": "255", "name": "image"},
+      "role_for_autoaccess": { "type": "tinyint", "length": "1", "default":0, "name": "Выставлять доступ", "hint":"Галочка используется только для ролей. Должна стоять только у одной роли. Для нее будет добавляться доступ из лога запрета доступа."},
+      "show_in_contacs": {"type": "tinyint", "length": "1", "name": "Show in contacts"},
+      "is_business_logic": { "type": "tinyint", "length": "1"}
+    }
+  },
+  "_user_history": {
+    "profile": {
+      "name": "_user_history",
+      "name_ru": "История изменения пользователя",
+      "ending": "а"
+    },
+    "structure": {
+      "id": {"type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "class_id": {"type": "bigint", "length": "20"},
+      "class_field_id": {"type": "bigint", "length": "20"},
+      "record_id": {"type": "bigint", "length": "20"},
+      "hash": {"type": "varchar", "length": "255"},
+      "operation_type": {"type": "varchar", "length": "255"},
+      "value": {"type": "text"}
+    }
+  },
+  "user_status": {
+    "profile": {
+      "name": "user_status",
+      "name_ru": "Статус пользователя",
+      "ending": ""
+    },
+    "structure": {
+      "id" : { "type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "name" : {"type": "varchar", "length": "255", "name": "Наименование"},
+      "sysname" : {"type": "varchar", "length": "255", "name": "Системное имя"}
+    }
+  },
+  "user_type": {
+    "profile": {
+      "name": "user_type",
+      "name_ru": "Тип пользователя",
+      "ending": ""
+    },
+    "structure": {
+      "id" : { "type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "name" : {"type": "varchar", "length": "255", "name": "Наименование"},
+      "sysname" : {"type": "varchar", "length": "255", "name": "Системное имя"}
+    }
+  },
+  "gender": {
+    "profile": {
+      "name": "gender",
+      "name_ru": "Пол",
+      "ending": ""
+    },
+    "structure": {
+      "id": {"type": "bigint","length": "20","notNull": true,"autoInc": true,"primary_key": true},
+      "name": {"type": "varchar","length": "255","unique": true},
+      "sysname": {"type": "varchar","length": "255"}
+    }
+  },
+  "company_sys": {
+    "profile": {
+      "name": "company_sys",
+      "name_ru": "Компания",
+      "ending": "а",
+      "server_parent_table":"company_sys",
+      "server_parent_key":"parent_id"
+    },
+    "structure": {
+      "id" : { "type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "parent_id" : {"type": "bigint", "length": "20", "visible": false},
+      "name" : {"type": "varchar", "length": "255", "name": "Наименование"},
+      "main_company" : {"type": "tinyint", "length": "1", "name": "Главная компания"},
+      "notifications_emails" : {"type": "text", "name": "Email-ы для уведомлений"},
+      "sysname" : {"type": "varchar", "length": "255", "name": "Системное имя"}
+    }
+  },
+  "menu": {
+    "profile": {
+      "name": "menu",
+      "name_ru": "Главное меню",
+      "ending": "о",
+      "server_parent_table":"menu",
+      "server_parent_key":"parent_id"
+    },
+    "structure": {
+      "id" : { "type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "is_visible" : {"type": "tinyint", "length": "1", "name": "Видимость"},
+      "name" : {"type": "varchar", "length": "255", "name": "Наименование"},
+      "type_id" : {"type": "bigint", "length": "20", "visible": false},
+      "menu_type" : {"type": "varchar", "length": "255", "from_table": "menu_type", "keyword": "type_id", "return_column": "sysname", "is_virtual": true, "name": "Тип меню sysname", "visible": false},
+      "menu_type_name" : {"type": "varchar", "length": "255", "from_table": "menu_type", "keyword": "type_id", "return_column": "name", "is_virtual": true, "name": "Тип меню"},
+      "parent_id" : {"type": "bigint", "length": "20", "visible": false},
+      "parent_menu" : {"type": "varchar", "length": "255", "from_table": "menu", "keyword": "parent_id", "return_column": "menu_item", "is_virtual": true, "name": "Родительский элемент sysname", "visible": false},
+      "parent_menu_ru" : {"type": "varchar", "length": "255", "from_table": "menu", "keyword": "parent_id", "return_column": "name", "is_virtual": true, "name": "Родительский элемент"},
+      "name_with_id" : {"type": "varchar", "length": "255", "is_virtual": true, "concat_fields": "name, (,id,)", "name": "Наименование с id"},
+      "client_object_id" : {"type": "bigint", "length": "20", "visible": false},
+      "client_object" : {"type": "varchar", "length": "255", "from_table": "client_object_profile", "keyword": "client_object_id", "return_column": "name", "is_virtual": true, "name": "Клиентский объект sys", "visible": false},
+      "client_object_name" : {"type": "varchar", "length": "255", "from_table": "client_object_profile", "keyword": "client_object_id", "return_column": "name_ru", "is_virtual": true, "name": "Клиентский объект"},
+      "class_id" : {"type": "bigint", "length": "20", "visible": false},
+      "class_name" : {"type": "varchar", "length": "255", "from_table": "class_profile", "keyword": "class_id", "return_column": "name", "is_virtual": true, "name": "Класс sys", "visible": false},
+      "class_name_ru" : {"type": "varchar", "length": "255", "from_table": "class_profile", "keyword": "class_id", "return_column": "name_ru", "is_virtual": true, "name": "Класс"},
+      "sort_no" : {"type": "bigint", "length": "20"},
+      "menu_item" : {"type": "varchar", "length": "255", "unique": true, "name": "Название пункта меню"},
+      "description" : {"type": "varchar", "length": "255", "name": "Описание пункта меню"},
+      "icon" : {"type": "varchar", "length": "255", "name": "Иконка"}
+    }
+  },
+  "menu_type": {
+    "profile": {
+      "name": "menu_type",
+      "name_ru": "Тип меню",
+      "ending": ""
+    },
+    "structure": {
+      "id" : { "type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "name" : {"type": "varchar", "length": "255", "name": "Наименование"},
+      "sysname" : {"type": "varchar", "length": "255", "name": "Системное имя"}
+    }
+  },
+  "filter_type": {
+    "profile": {
+      "name": "filter_type",
+      "name_ru": "Тип фильтра",
+      "ending": ""
+    },
+    "structure": {
+      "id" : { "type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "name" : {"type": "varchar", "length": "255", "name": "Наименование"},
+      "default_for_data_type" : {"type": "varchar", "length": "255", "name": "Знач. по умолч. для типа данных"},
+      "sysname" : {"type": "varchar", "length": "255", "name": "Системное имя"}
+    }
+  },
+  "type_of_editor": {
+    "profile": {
+      "name": "type_of_editor",
+      "name_ru": "Тип редактора",
+      "ending": ""
+    },
+    "structure": {
+      "id" : { "type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "name" : {"type": "varchar", "length": "255", "name": "Наименование"},
+      "default_for_data_type" : {"type": "varchar", "length": "255", "name": "Знач. по умолч. для типа данных"},
+      "sysname" : {"type": "varchar", "length": "255", "name": "Системное имя"}
+    }
+  },
+  "file": {
+    "profile": {
+      "name": "file",
+      "name_ru": "Файл",
+      "ending": ""
+    },
+    "structure": {
+      "id" : { "type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "name" : {"type": "varchar", "length": "255", "name": "Наименование"},
+      "filename" : {"type": "varchar", "length": "255", "name": "Имя файла"},
+      "filepath" : {"type": "varchar", "length": "255", "name": "Путь к файлу"},
+      "extension" : {"type": "varchar", "length": "255", "name": "Расширение"},
+      "absolute_path" : {"type": "varchar", "length": "255", "name": "Полный путь к файлу"}
+    }
+  },
+  "rollback_backup": {
+    "profile": {
+      "name": "rollback_backup",
+      "name_ru": "Архив важных изменений",
+      "ending": ""
+    },
+    "structure": {
+      "id": { "type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "rollbackKey": { "type": "varchar", "length": "255", "name": "Ключ"},
+      "class_name": { "type": "varchar", "length": "255", "name": "Class"},
+      "class_name_ru": { "type": "varchar", "length": "255", "name": "Класс"},
+      "method": { "type": "varchar", "length": "255", "name": "Метод"},
+      "params": { "type": "text", "name": "Параметры"},
+      "filename": { "type": "text", "name": "Файл"}
+    }
+  },
+  "class_operation": {
+    "profile": {
+      "name": "class_operation",
+      "name_ru": "Операция класса",
+      "ending": "а",
+      "server_parent_table":"class_operation",
+      "server_parent_key":"parent_id"
+    },
+    "structure": {
+      "id" : { "type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "parent_id" : {"type": "bigint", "length": "20", "visible": false, "parent_key": true},
+      "class_parent_id" : {"type": "bigint", "length": "20", "visible": false},
+      "class_parent": { "type": "varchar", "length": "255", "from_table": "class_profile", "keyword": "class_parent_id", "is_virtual": true, "return_column": "name", "name": "Класс родитель" },
+      "class_id": { "type": "bigint", "length": "20", "notNull": true, "unique":true},
+      "class": { "type": "varchar", "length": "255", "from_table": "class_profile", "keyword": "class_id", "is_virtual": true, "return_column": "name", "name": "Класс" },
+      "server_parent_table": { "type": "varchar", "length": "255", "from_table": "class_profile", "keyword": "class_id", "is_virtual": true, "return_column": "server_parent_table"},
+      "server_parent_key": { "type": "varchar", "length": "255", "from_table": "class_profile", "keyword": "class_id", "is_virtual": true, "return_column": "server_parent_key"},
+      "name" : {"type": "varchar", "length": "255", "unique":true},
+      "name_ru" : {"type": "varchar", "length": "255"},
+      "description" : {"type": "text"},
+      "is_top" : {"type": "tinyint", "length": "1"},
+      "sort_no" : {"type": "bigint", "length": "20"}
+    }
+  },
+  "access_to_operation": {
+    "profile": {
+      "name": "access_to_operation",
+      "name_ru": "Доступ к операциям",
+      "ending": "",
+      "server_parent_table":"class_operation",
+      "server_parent_key":"class_operation_id"
+    },
+    "structure": {
+      "id" : { "type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "class_operation_id" : {"type": "bigint", "length": "20", "parent_key": true, "unique":true},
+      "user_id": { "type": "bigint", "length": "20", "notNull": true, "unique":true},
+      "firstname" : {"type": "varchar", "length": "255", "from_table": "user", "keyword": "user_id", "return_column": "firstname", "is_virtual": true},
+      "lastname" : {"type": "varchar", "length": "255", "from_table": "user", "keyword": "user_id", "return_column": "lastname", "is_virtual": true},
+      "midname" : {"type": "varchar", "length": "255", "from_table": "user", "keyword": "user_id", "return_column": "midname", "is_virtual": true},
+      "email" : {"type": "varchar", "length": "255", "from_table": "user", "keyword": "user_id", "return_column": "email", "is_virtual": true},
+      "fio" : {"type": "varchar", "length": "255", "concat_fields": "firstname midname lastname", "is_virtual": true, "name": "ФИО"},
+      "parent_id": { "type": "bigint", "length": "20", "from_table": "class_operation", "keyword": "class_operation_id", "is_virtual": true, "return_column": "parent_id" },
+      "name": { "type": "bigint", "length": "20", "from_table": "class_operation", "keyword": "class_operation_id", "is_virtual": true, "return_column": "name" },
+      "class_id": { "type": "bigint", "length": "20", "from_table": "class_operation", "keyword": "class_operation_id", "is_virtual": true, "return_column": "class_id" },
+      "class": { "type": "varchar", "length": "255", "join_table": "class_operation", "from_table": "class_profile", "keyword": "class_id", "is_virtual": true, "return_column": "name" },
+      "server_parent_table": { "type": "varchar", "length": "255", "join_table": "class_operation", "from_table": "class_profile", "keyword": "class_id", "is_virtual": true, "return_column": "server_parent_table" },
+      "server_parent_key": { "type": "varchar", "length": "255", "join_table": "class_operation", "from_table": "class_profile", "keyword": "class_id", "is_virtual": true, "return_column": "server_parent_key" },
+      "is_access": { "type": "tinyint", "length": "1", "default":0},
+      "is_access_by_list": { "type": "tinyint", "length": "1", "default":0},
+      "is_denied": { "type": "tinyint", "length": "1", "default":0}
+    }
+  },
+  "access_to_menu": {
+    "profile": {
+      "name": "access_to_menu",
+      "name_ru": "Доступ к меню",
+      "ending": "",
+      "server_parent_table":"user, menu",
+      "server_parent_key":"user_id, menu_id"
+    },
+    "structure": {
+      "id" : { "type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "menu_id" : {"type": "bigint", "length": "20", "parent_key": true, "unique":true},
+      "user_id": { "type": "bigint", "length": "20", "notNull": true, "unique":true},
+      "menu_item": { "type": "bigint", "length": "20", "from_table": "menu", "keyword": "menu_id", "is_virtual": true, "return_column": "menu_item" }
+    }
+  },
+  "list_of_access": {
+    "profile": {
+      "name": "list_of_access",
+      "name_ru": "List of access",
+      "ending": "",
+      "server_parent_table":"class_operation",
+      "server_parent_key":"class_operation_id,user_id"
+    },
+    "structure": {
+      "id" : { "type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "class_operation_id" : {"type": "bigint", "length": "20", "parent_key": true, "unique":true},
+      "class_operation_name" : {"type": "varchar", "length": "255", "from_table": "class_operation", "keyword": "class_operation_id", "return_column": "name", "is_virtual": true},
+      "user_id": { "type": "bigint", "length": "20", "notNull": true, "unique":true},
+      "firstname" : {"type": "varchar", "length": "255", "from_table": "user", "keyword": "user_id", "return_column": "firstname", "is_virtual": true},
+      "lastname" : {"type": "varchar", "length": "255", "from_table": "user", "keyword": "user_id", "return_column": "lastname", "is_virtual": true},
+      "midname" : {"type": "varchar", "length": "255", "from_table": "user", "keyword": "user_id", "return_column": "midname", "is_virtual": true},
+      "fio" : {"type": "varchar", "length": "255", "concat_fields": "firstname midname lastname", "is_virtual": true, "name": "ФИО"},
+      "record_id": { "type": "bigint", "length": "20", "notNull": true, "unique":true},
+      "is_active": { "type": "tinyint", "length": "1", "default":1}
+    }
+  },
+  "user_role": {
+    "profile": {
+      "name": "user_role",
+      "name_ru": "Роли пользователя",
+      "ending": "",
+      "server_parent_table":"user",
+      "server_parent_key":"user_id"
+    },
+    "structure": {
+      "id" : { "type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "user_id" : {"type": "bigint", "length": "20", "parent_key": true, "unique":true, "require": true},
+      "role_user_id": { "type": "bigint", "length": "20", "notNull": true, "unique":true, "require": true},
+      "firstname" : {"type": "varchar", "length": "255", "from_table": "user", "keyword": "user_id", "return_column": "firstname", "is_virtual": true},
+      "lastname" : {"type": "varchar", "length": "255", "from_table": "user", "keyword": "user_id", "return_column": "lastname", "is_virtual": true},
+      "midname" : {"type": "varchar", "length": "255", "from_table": "user", "keyword": "user_id", "return_column": "midname", "is_virtual": true},
+      "email" : {"type": "varchar", "length": "255", "from_table": "user", "keyword": "user_id", "return_column": "email", "is_virtual": true},
+      "fio" : {"type": "varchar", "length": "255", "concat_fields": "firstname midname lastname", "is_virtual": true, "name": "ФИО"},
+      "firstname_role" : {"type": "varchar", "length": "255", "from_table": "user", "keyword": "role_user_id", "return_column": "firstname", "is_virtual": true},
+      "lastname_role" : {"type": "varchar", "length": "255", "from_table": "user", "keyword": "role_user_id", "return_column": "lastname", "is_virtual": true},
+      "midname_role" : {"type": "varchar", "length": "255", "from_table": "user", "keyword": "role_user_id", "return_column": "midname", "is_virtual": true},
+      "email_role" : {"type": "varchar", "length": "255", "from_table": "user", "keyword": "role_user_id", "return_column": "email", "is_virtual": true},
+      "fio_role" : {"type": "varchar", "length": "255", "concat_fields": "firstname_role midname_role lastname_role", "is_virtual": true, "name": "Роль"},
+      "is_active": { "type": "tinyint", "length": "1", "default":1}
+    }
+  },
+  "access_denied_log": {
+    "profile": {
+      "name": "access_denied_log",
+      "name_ru": "Отказы доступа",
+      "ending": ""
+    },
+    "structure": {
+      "id" : { "type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "user_id": { "type": "bigint", "length": "20", "notNull": true},
+      "command_" : {"type": "varchar", "length": "255"},
+      "class_" : {"type": "varchar", "length": "255"},
+      "client_object_" : {"type": "varchar", "length": "255"},
+      "date": { "type": "datetime", "name": "Дата"}
+    }
+  },
+  "translate_cache": {
+    "profile": {
+      "name": "translate_cache",
+      "name_ru": "translate_cache",
+      "ending": ""
+    },
+    "structure": {
+      "id" : { "type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "alias" : {"type": "varchar", "length": "2000", "notNull": true, "unique":true, "require": true},
+      "lang": { "type": "varchar", "length": "20", "notNull": true, "unique":true, "require": true},
+      "text_" : {"type": "text"},
+      "text_corrected" : {"type": "text"}
+    }
+  },
+  "update_connection": {
+    "profile": {
+      "name": "update_connection",
+      "name_ru": "Подключение для обновления",
+      "ending": "о"
+    },
+    "structure": {
+      "id": { "type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "name": { "type": "varchar", "length": "255", "name": "Наименование"},
+      "is_active": { "type": "tinyint", "length": "1", "default":0, "name": "Активно"},
+      "in_use": { "type": "tinyint", "length": "1", "default":0, "name": "Используется", "editable": false},
+      "ip": { "type": "varchar", "length": "255", "name": "IP"},
+      "username": { "type": "varchar", "length": "255", "name": "Пользователь"},
+      "is_default": { "type": "tinyint", "length": "1", "default":0, "name": "По умолчанию"},
+      "description": { "type": "text", "name": "Описание"},
+      "pass": { "type": "varchar", "length": "255", "name": "Пароль", "get_formating": "hide_pass"}
+    }
+  },
+  "user_setting_co_filter": {
+    "profile": {
+      "name": "user_setting_co_filter",
+      "name_ru": "Пользовательская настройка фильтра",
+      "ending": ""
+    },
+    "structure": {
+      "id": { "type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "user_id": { "type": "bigint", "length": "20"},
+      "co_and_class": { "type": "varchar", "length": "255"},
+      "field_id": { "type": "bigint", "length": "20"},
+      "key_": {"type": "varchar", "length": "255"},
+      "comparisonType": {"type": "varchar", "length": "255"},
+      "type": {"type": "varchar", "length": "255"},
+      "val1": { "type": "varchar", "length": "255"},
+      "val2": { "type": "varchar", "length": "255"}
+    }
+  },
+  "user_setting_co_visible": {
+    "profile": {
+      "name": "user_setting_co_visible",
+      "name_ru": "Пользовательская настройка видимости колонок",
+      "ending": ""
+    },
+    "structure": {
+      "id": { "type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "user_id": { "type": "bigint", "length": "20"},
+      "co_and_class": { "type": "varchar", "length": "255"},
+      "field_id": { "type": "bigint", "length": "20"},
+      "key_": {"type": "varchar", "length": "255"},
+      "visible": { "type": "tinyint", "length": "1", "name": "Видима"}
+    }
+  }
+}

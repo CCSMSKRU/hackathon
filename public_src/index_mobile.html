@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CCS.YES PROFM - Professional facility managment</title>
+
+    <link href="assets/img/favicon_mb.png" rel="shortcut icon" type="image/i-icon">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="assets/css/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="assets/css/libs/uniform.default.css" rel="stylesheet">
+    <link href="assets/js/libs/bootstrap-toastr/toastr.min.css" rel="stylesheet">
+
+    <link href="assets/js/plugins/dateRangePicker/css/datepicker.css" rel="stylesheet">
+    <link href="assets/css/libs/bootstrap/css/datetimepicker.css" rel="stylesheet">
+
+    <link href="assets/css/normalize.css" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/js/plugins/jstree/dist/themes/default/style.min.css" />
+
+    <link rel="stylesheet" href="assets/js/plugins/owlCarousel/owl.carousel.css" />
+    <link rel="stylesheet" href="assets/js/plugins/my_gallery/styles.css" />
+
+
+    <link href="assets/css/components.css" rel="stylesheet">
+    <link href="assets/js/plugins/checkbox/checkbox.css" rel="stylesheet">
+
+
+    <link href="assets/css/indexViewK.css" rel="stylesheet">
+    <link href="assets/js/libs/json_renderer/json_renderer.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/swag_styles/components.css">
+    <link href="assets/libs/flatpickr/flatpickr.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/swag_styles/fonts.css">
+    <link rel="stylesheet" href="assets/css/libs/fontawesome-5.4.1/css/fontawesome-5.4.1.all.css">
+
+    <link rel="stylesheet" href="assets/css/swag_styles/components_mobile.css">
+
+
+
+</head>
+<body class="mobile">
+
+    <!--<div class="form-loader-holder" style="opacity: 1;">-->
+    <!--<div class="form-loader-fader"></div>-->
+    <!--<div class="form-loader-body">-->
+        <!--<div class="form-loader-gif"></div>-->
+        <!--<div class="form-loader-text">CCS.YES<br><span class="powered-by-loader">by Complex Cloud Solutions</span></div>-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <div id="modalWindows">
+        <div id="modalWindows-position-helper" position="undefined"></div>
+    </div>
+    <div id="modalSelectionPrevent"></div>
+
+
+    <div class="header">
+        <div id="logo">
+            <div class="onLogoReloadIcon"><i class="fa fa-refresh fa-spin"></i></div>
+            <img style="height: 52px;" src="assets/img/logoNew.png">
+        </div>
+
+        <div id="mainPanel">
+            <div class="hidden incQuotaCtrl fa-download fa"></div>
+
+            <div id="right-panel">
+                <div id="user-block-holder">
+                    <img src="assets/img/default-user.jpg" />
+                </div>
+
+                <!--<div class="logout" style="opacity: 1;" onclick="logout(event, this);"></div>-->
+
+                <div id="toggle-menu" class="fa fa-bars"></div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="contentWrap">
+
+        <div id="main-menu-popup">
+            <ul id="mainMenu" class="page-sidebar-menu"></ul>
+            <div class="close-main-menu fa fa-times"></div>
+        </div>
+
+        <div class="page-content-wrapper">
+
+            123
+
+        </div>
+
+
+    </div>
+
+<!--include scripts-->
+
+    <script src="assets/js/libs/jquery/jquery-2.0.3.min.js" type="text/javascript"></script>
+    <script src="assets/js/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+    <script src="assets/js/libs/async.js" type="text/javascript"></script>
+    <script src="assets/js/onload.js" type="text/javascript"></script>
+    <script src="assets/js/libs/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/js/libs/jquery/plugins/jquery.cookie.js" type="text/javascript"></script>
+    <script src="assets/js/libs/jquery/plugins/jquery.uniform.min.js" type="text/javascript"></script>
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+
+    <script src="assets/js/plugins/jquery.contextmenu.js"></script>
+    <script src="assets/js/plugins/zeroClipboard/ZeroClipboard.js"></script>
+    <script src="assets/js/plugins/mustache.js"></script>
+    <script src="assets/js/plugins/jquery.mousewheel.min.js"></script>
+    <script src="assets/js/plugins/xmlToJSON.js"></script>
+    <!-- BEGIN PLUGINS USED BY X-EDITABLE -->
+    <!--<script src="metronic/admin/template_content/assets/plugins/select2/select2.min.js" type="text/javascript"></script>-->
+
+    <script src="../public/metronic/admin/template_content/assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <script src="../public/metronic/admin/template_content/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.js" type="text/javascript"></script>
+    <script src="../public/metronic/admin/template_content/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js" type="text/javascript"></script>
+    <script src="../public/metronic/admin/template_content/assets/plugins/moment.min.js" type="text/javascript"></script>
+    <script src="../public/metronic/admin/template_content/assets/plugins/jquery.mockjax.js" type="text/javascript"></script>
+    <script src="assets/js/libs/jquery.maskedinput.min.js"></script>
+
+    <script type="text/javascript" src="assets/clockpicker/clockpicker.js"></script>
+
+    <!-- <script type="text/javascript" src="metronic/admin/template_content/assets/plugins/data-tables/jquery.dataTables.min.js"></script> -->
+    <script src="../public/metronic/admin/template_content/assets/plugins/bootstrap-editable/bootstrap-editable/js/bootstrap-editable.min.js" type="text/javascript"></script>
+    <script src="../public/metronic/admin/template_content/assets/plugins/bootstrap-editable/inputs-ext/address/address.js" type="text/javascript"></script>
+    <!--<script src="metronic/admin/template_content/assets/plugins/bootstrap-editable/inputs-ext/wysihtml5/wysihtml5.js" type="text/javascript"></script>-->
+
+    <!--<script src="metronic/admin/template_content/assets/plugins/bootstrap-switch/static/js/bootstrap-switch.js" type="text/javascript"></script>-->
+    <script src="../public/metronic/admin/template_content/assets/plugins/bootstrap-switch-master/dist/js/bootstrap-switch.min.js" type="text/javascript"></script>
+
+    <script src="../public/metronic/admin/template_content/assets/plugins/bootstrap-toastr/toastr.js"></script>
+
+    <script src="../public/metronic/admin/template_content/assets/plugins/jquery-nestable/jquery.nestable.js"></script>
+
+    <!-- <script type="text/javascript" src="metronic/admin/template_content/assets/plugins/data-tables/DT_bootstrap.js"></script> -->
+    <script src="../public/metronic/admin/template_content/assets/scripts/ui-toastr.js"></script>
+    <script src="../public/metronic/admin/template_content/assets/scripts/app.js"></script>
+    <script src="../public/metronic/admin/template_content/assets/scripts/form-editable.js"></script>
+    <script src="../public/metronic/admin/template_content/assets/scripts/ui-bootbox.js"></script>
+    <script src="../public/metronic/admin/template_content/assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js"></script>
+
+    <script src="../public/metronic/admin/template_content/assets/scripts/form-components.js"></script>
+    <script src="../public/metronic/admin/template_content/assets/plugins/bootbox/bootbox.min.js" type="text/javascript"></script>
+    <!--<script src="metronic/admin/template_content/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>-->
+    <!-- END X-EDITABLE PLUGIN -->
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script>
+        jQuery(document).ready(function () {
+
+            App.init();
+            FormEditable.init();
+            UIToastr.init();
+            select3init();
+
+
+        });
+    </script>
+    <script src="socket.io/socket.io.js"></script>
+    <script src="assets/js/delivery.js"></script>
+    <!--<script src="assets/js/main.js"></script>-->
+    <script src="assets/js/main_mobile.js"></script>
+
+    <script src="assets/js/libs/randomColor.js"></script>
+    <script src="assets/js/validator/validator.js"></script>
+
+    <script src="assets/js/code39.js"></script>
+
+    <script src="assets/js/plugins/JsBarcode-master/JsBarcode.js"></script>
+    <script src="assets/js/plugins/JsBarcode-master/CODE39.js"></script>
+    <script src="assets/js/plugins/JsBarcode-master/CODE128.js"></script>
+
+    <script src="assets/js/spin/spin.min.js"></script>
+    <script src="assets/js/formNew.js"></script>
+    <script src="assets/js/tableNew.js"></script>
+    <script src="assets/js/contentNew.js"></script>
+    <script src="assets/js/master.js"></script>
+
+    <!--Frames-->
+    <script src="assets/js/Frames.js"></script>
+    <script src="assets/js/Frame.js"></script>
+    <!--END Frames-->
+
+    <script src="assets/js/inherits/inherits.js"></script>
+    <script src="assets/js/eventEmiter/eventEmiter.js"></script>
+
+    <script src="assets/js/uploadFiles.js"></script>
+    <script src="assets/js/socketClient.js"></script>
+    <script src="assets/js/print.js"></script>
+    <!-- <script src="assets/js/client.js"></script> -->
+
+    <script src="assets/js/menurender.js"></script>
+
+    <script src="assets/js/index/index.js" type="text/javascript"></script>
+    <!-- <script src="assets/js/tablessettings.js"></script>
+    <script src="assets/js/modalsettings.js"></script>
+    <script src="assets/js/rowclass.js"></script>
+     -->
+
+    <!-- <script src="assets/js/tableclass.js"></script> -->
+    <!--<script src="assets/js/form.js"></script>-->
+    <script src="assets/js/content.js"></script>
+    <!-- <script src="assets/js/alert.js"></script>  -->
+    <!-- <script src="assets/js/contentclass.js"></script> -->
+    <script src="assets/js/inlineEditing.js"></script>
+    <script src="assets/js/uiUl.js"></script>
+    <script src="assets/js/classTabs.js"></script>
+    <script src="assets/js/modalmini.class.js"></script>
+
+    <script src="assets/js/classie.js"></script>
+    <script src="assets/js/borderMenu.js"></script>
+
+    <script src="assets/js/no_select.js"></script>
+    <script src="assets/js/uiTabs.js"></script>
+    <script src="assets/js/toastrLock.js"></script>
+
+    <script src="assets/js/libs/jquery/plugins/jquery.mousewheel.min.js"></script>
+    <script src="assets/js/contextMenu/contextMenu.js"></script>
+
+
+    <script src="assets/js/reports.js"></script>
+    <script src="assets/js/lockScreen/lockScreen.js"></script>
+
+    <!--MapEditor-->
+
+
+
+    <script type="text/javascript" src="assets/js/select3/select3.js"></script>
+    <script type="text/javascript" src="assets/js/multiSelect/multiSelect.js"></script>
+    <script type="text/javascript" src="assets/js/imageEditor/imageEditor.js"></script>
+
+    <!--FOR MODAL WINDOWS-->
+    <script src="assets/js/plugins/jquery.easing.1.3.min.js"></script>
+    <script src="assets/js/modalWindows/modalWindows.js"></script>
+    <script src="assets/js/phone.js"></script>
+    <script src="assets/js/classicTable/classicTable.js"></script>
+
+    <script src="assets/js/mini_form/mini_form.js"></script>
+    <script>
+        modalWindow();
+        classicTable();
+    </script>
+
+
+    <script src="assets/libs/flatpickr/flatpickr.js"></script>
+    <script src="assets/libs/flatpickr/ru.js"></script>
+
+    <!--<script type="text/javascript" src="assets/js/plugins/dateRangePicker/js/bootstrap-datepicker.js"></script>-->
+    <!--<script type="text/javascript" src="assets/js/plugins/dateRangePicker/js/bootstrap-datepicker2.js"></script>-->
+    <!--<script type="text/javascript" src="assets/js/plugins/dateRangePicker/js/locales/bootstrap-datepicker.ru.js"></script>-->
+    <script type="text/javascript" src="assets/js/plugins/daysweekpicker/daysweekpicker.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/checkbox/checkbox.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/fn_train/fn_train.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/ion.rangeslider/js/ion.rangeSlider.min.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/petrovich/petrovich.min.js"></script>
+
+    <script type="text/javascript" src="assets/js/plugins/object_tree/object_tree.js"></script>
+
+    <script src="assets/js/plugins/jstree/dist/jstree.min.js"></script>
+
+    <!--<script type="text/javascript" src="assets/js/plugins/elrte-1.3/js/elrte.min.js"></script>-->
+    <!--<script type="text/javascript" src="assets/js/plugins/elrte-1.3/js/i18n/elrte.ru.js"></script>-->
+
+    <script type="text/javascript" src="assets/js/plugins/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/ckeditor/lang/ru.js"></script>
+
+    <script src="assets/js/logout.js"></script>
+
+    <!--[if lt IE 10]>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.1/jquery.xdomainrequest.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="assets/js/plugins/suggestions/suggessions.js"></script>
+    <!--END FOR MODAL WINDOWS-->
+    <script src="assets/js/libs/json_renderer/json_renderer.js" type="text/javascript"></script>
+
+    <script src="assets/js/plugins/tinymce/js/tinymce/tinymce.min.js" type="text/javascript"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+    <script src="assets/js/plugins/owlCarousel/owl.carousel.min.js" type="text/javascript"></script>
+    <script src="assets/js/plugins/my_gallery/my_gallery.js" type="text/javascript"></script>
+    <script src="assets/js/plugins/extraFuncs.js" type="text/javascript"></script>
+    <script src="assets/js/plugins/two_columns_editor/two_columns_editor.js" type="text/javascript"></script>
+    <!--<script src="assets/js/plugins/two_columns_editor/two_columns_editor_2.js" type="text/javascript"></script>-->
+    <script src="assets/js/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="assets/js/bootstrap-weekpicker.js" type="text/javascript"></script>
+    <script src="assets/js/weekPicker.min.js" type="text/javascript"></script>
+
+    <script src="assets/js/fileTabHandler.js" type="text/javascript"></script>
+    <script src="assets/js/commentTabHandler.js" type="text/javascript"></script>
+
+    <script src="assets/js/qrcode.min.js" type="text/javascript"></script>
+
+    <script src="assets/js/dashboard.js"></script>
+
+
+
+</body>
+</html>

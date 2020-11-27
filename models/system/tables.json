@@ -1,0 +1,167 @@
+{
+  "request_work": {
+    "profile": {
+      "name": "request_work",
+      "name_ru": "Запрос на выполнение работы",
+      "ending": "и",
+      "server_parent_table": "object_",
+      "server_parent_key": "object_id"
+    },
+    "structure": {
+      "id": {"type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+
+      "request": {"type": "text", "name": "Текст заявки"},
+
+      "start_time_plan": {"type": "datetime", "name": "Начало выполнения (план)"},
+      "end_time_plan": {"type": "datetime", "name": "Дата завершения (план)"},
+
+      "end_time": {"type": "datetime", "name": "Дата завершения"},
+
+      "paid": {"type": "tinyint", "length": "1"},
+
+      "type_request_for_request_work_id": {"type": "bigint", "length": "20", "visible": false},
+      "type_request_for_request_work": {"type": "text", "from_table": "type_request_for_request_work", "keyword": "type_request_for_request_work_id", "return_column": "name", "is_virtual": true, "name": "Тип запроса"},
+      "type_request_for_request_work_sysname": {"type": "text", "from_table": "type_request_for_request_work", "keyword": "type_request_for_request_work_id", "return_column": "sysname", "is_virtual": true, "name": "Тип запроса"},
+
+      "status_request_work_id": {"type": "bigint", "length": "20", "visible": false, "name":  "статус выполнения"},
+      "status_request_work": {"type": "text", "from_table": "status_request_work_for_request_work", "keyword": "status_request_work_id", "return_column": "name", "is_virtual": true, "name": "Статус запроса"},
+      "status_request_work_sysname": {"type": "text", "from_table": "status_request_work_for_request_work", "keyword": "status_request_work_id", "return_column": "sysname", "is_virtual": true, "name": "Статус запроса", "default": "CREATED"},
+
+      "timeliness_id": {"type": "bigint", "length": "20", "visible": false, "name":  "срочность"},
+      "timeliness_for_request_work": {"type": "text", "from_table": "timeliness_for_request_work", "keyword": "timeliness_id", "return_column": "name", "is_virtual": true, "name": "Срочность запроса"},
+      "timeliness_for_request_work_sysname": {"type": "text", "from_table": "timeliness_for_request_work", "keyword": "timeliness_id", "return_column": "sysname", "is_virtual": true},
+
+      "executor_user_id": {"type": "bigint", "length": "20", "visible": false, "name": "исполнитель пользователь"},
+      "executor_user": {"type": "varchar", "length": "255", "from_table": "user", "keyword": "executor_user_id", "return_column": "firstname", "is_virtual": true, "name": "Исполнитель"},
+      "executor_user_midname": {"type": "varchar", "length": "255", "from_table": "user", "keyword": "executor_user_id", "return_column": "midname", "is_virtual": true, "name": "Исполнитель отчество"},
+      "executor_user_lastname": {"type": "varchar", "length": "255", "from_table": "user", "keyword": "executor_user_id", "return_column": "lastname", "is_virtual": true, "name": "Исполнитель Фамилия"},
+      "executor_user_fio": {"type": "varchar", "length": "255", "is_virtual": true, "concat_fields": "executor_user, ,executor_user_midname, ,executor_user_lastname"},
+      "executor_user_phone": {"type": "varchar", "length": "255", "from_table": "user", "keyword": "executor_user_id", "return_column": "phone", "is_virtual": true, "name": "Телефона исполнителя"},
+
+      "is_archived": {"type": "tinyint", "length": "1", "default": 0},
+      "by_close_photo_necessary": {"type": "tinyint", "length": "1", "default": 0, "name": "Обязательно фото при закрытии"},
+
+      "customer_phone": {"type": "varchar", "length": "255", "from_table": "user", "keyword": "created_by_user_id", "return_column": "phone", "is_virtual": true, "name": "Телефон заказчика"},
+      "created_by_user_midname": {"type": "varchar", "length": "255", "from_table": "user", "keyword": "created_by_user_id", "return_column": "midname", "is_virtual": true, "name": "Отчество заявителя"},
+      "created_by_user_lastname": {"type": "varchar", "length": "255", "from_table": "user", "keyword": "created_by_user_id", "return_column": "lastname", "is_virtual": true, "name": "Фамилия заявителя"},
+      "created_by_user_fio": {"type": "varchar", "length": "255", "is_virtual": true, "concat_fields": "created_by_user, ,created_by_user_midname, ,created_by_user_lastname"}
+    }
+  },
+
+  "_request_work_history": {
+    "profile": {
+      "name": "_request_work_history",
+      "name_ru": "История заявка",
+      "ending": "а",
+      "server_parent_table": "request_work",
+      "server_parent_key": "record_id"
+    },
+    "structure": {
+      "id": {"type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "class_id": {"type": "bigint", "length": "20"},
+      "class_field_id": {"type": "bigint", "length": "20"},
+      "record_id": {"type": "bigint", "length": "20"},
+      "hash": {"type": "varchar", "length": "255"},
+      "operation_type": {"type": "varchar", "length": "255"},
+      "value": {"type": "text"}
+    }
+  },
+
+  "status_request_work_for_request_work": {
+    "profile": {
+      "name": "status_request_work_for_request_work",
+      "name_ru": "Статус запроса заявки на работу",
+      "ending": ""
+    },
+    "structure": {
+      "id": {"type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "name": {"type": "varchar", "length": "255"},
+      "sysname": {"type": "varchar", "length": "255"}
+    }
+  },
+  "timeliness_for_request_work": {
+    "profile": {"name": "timeliness_for_request_work", "name_ru": "Срочность запроса заявки", "ending": ""},
+    "structure": {
+      "id": {"type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "name": {"type": "varchar", "length": "255"},
+      "sysname": {"type": "varchar", "length": "255"}
+    }
+  },
+  "type_request_for_request_work": {
+    "profile": {"name": "type_request_for_request_work", "name_ru": "Тип заявки", "ending": ""},
+    "structure": {
+      "id": {"type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "name": {"type": "varchar", "length": "255"},
+      "sysname": {"type": "varchar", "length": "255"}
+    }
+  },
+
+  "file_comment_request_work":{
+    "profile": {
+      "name": "file_comment_request_work",
+      "name_ru": "Файлы к комментарию работы",
+      "ending": "",
+      "server_parent_table": "request_work_comment",
+      "server_parent_key": "request_work_comment_id"
+    },
+    "structure": {
+      "id": {"type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "request_work_comment_id": {"type": "bigint", "length": "20", "parent_key": true, "visible": false},
+      "request_work_id": {"type": "bigint", "length": "20", "visible": false, "from_table": "request_work_comment", "keyword": "request_work_comment_id", "return_column": "request_work_id", "is_virtual": true},
+
+      "file_id": {"type": "bigint", "length": "20", "visible": false},
+      "extension": { "type": "varchar", "length": "255", "from_table": "file", "keyword": "file_id", "return_column": "extension", "is_virtual": true},
+      "file_name_load": {"type": "varchar", "length": "255", "from_table": "file", "keyword": "file_id", "return_column": "name", "is_virtual": true},
+      "name": { "type": "varchar", "length": "255", "visible": false}
+    }
+  },
+
+  "session_attach_files": {
+    "profile": {
+      "name": "session_attach_files",
+      "name_ru": "Таблица для временного хранения прикреплённых файлов",
+      "ending": "",
+      "server_parent_table": "session_attach",
+      "server_parent_key": "session_attach_id"
+    },
+    "structure": {
+      "id": {"type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "file_id": {"type": "bigint", "length": "20", "visible": false},
+
+      "extension": { "type": "varchar", "length": "255", "from_table": "file", "keyword": "file_id", "return_column": "extension", "is_virtual": true},
+      "file_name_load": {"type": "varchar", "length": "255", "from_table": "file", "keyword": "file_id", "return_column": "name", "is_virtual": true},
+
+
+
+      "session_attach_id": {"type": "bigint", "length": "20", "visible": false},
+      "session": {"type": "varchar", "length": "255", "from_table": "session_attach", "keyword": "session_attach_id", "return_column": "session", "is_virtual": true, "visible": false}
+    }
+  },
+  "session_attach": {
+    "profile": {
+      "name": "session_attach",
+      "name_ru": "Сессия прикрепления фалов",
+      "ending": ""
+    },
+    "structure": {
+      "id": {"type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "session": { "type": "varchar", "length": "255"}
+    }
+  },
+
+  "client_system_setting": {
+    "profile": {
+      "name": "client_system_setting",
+      "name_ru": "Клиентские настройки",
+      "ending": ""
+    },
+    "structure": {
+      "id": {"type": "bigint", "length": "20", "notNull": true, "autoInc": true, "primary_key": true},
+      "name": {"type": "varchar", "name": "Наименование", "length": "255"},
+      "description": {"type": "text", "name": "Описание"},
+      "sysname": {"type": "varchar", "name": "Системное имя", "length": "255"},
+      "val1": {"type": "varchar", "name": "Значение 1", "length": "255"},
+      "val2": {"type": "varchar", "name": "Значение 2", "length": "255"}
+    }
+  }
+}
