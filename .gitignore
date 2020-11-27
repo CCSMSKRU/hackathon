@@ -31,6 +31,7 @@ node_modules
 !/DB/CLEAR/1
 public/*
 !public/package.json
+!public/metronic
 
 models/system/another_tables/
 
