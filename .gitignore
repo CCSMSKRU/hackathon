@@ -66,8 +66,3 @@ models/system/another_tables/*.*
 /ssl/*.*
 !/ssl/1
 
-/templates/*.*
-!/templates/1
-
-/views/*.*
-!/views/1
